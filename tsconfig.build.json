@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "@shared/*": [
+                "packages/shared/src/*"
+            ],
+            "@config/*": [
+                "packages/config/src/*"
+            ]
+        }
+    }
+}

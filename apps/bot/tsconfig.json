@@ -1,0 +1,40 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": [
+        "../../packages/shared/*"
+      ],
+      "@config/*": [
+        "../../packages/config/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+      "types/*": [
+        "types/*"
+      ],
+      "utiles/*": [
+        "utiles/*"
+      ],
+      "lib/*": [
+        "src/lib/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../../packages/shared"
+    },
+    {
+      "path": "../../packages/config"
+    }
+  ]
+}

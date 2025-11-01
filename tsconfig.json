@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "apps/bot"
+    },
+    {
+      "path": "apps/dashboard"
+    },
+    {
+      "path": "apps/admin/interface"
+    },
+    {
+      "path": "apps/admin/server"
+    },
+    {
+      "path": "packages/config"
+    },
+    {
+      "path": "packages/shared"
+    }
+  ]
+}
