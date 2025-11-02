@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/robo159/assets/main/images/robtic.png" width="60%" alt="Robtic" />
+  <img src="https://raw.githubusercontent.com/robo159/assets/main/images/robtic.png" width="80%" alt="Robtic" />
 </div>
 
 <p align="center">
