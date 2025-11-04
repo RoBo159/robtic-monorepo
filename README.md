@@ -3,11 +3,11 @@
 </div>
 
 <p align="center">
-  <a href="https://discord.gg/YOUR_SERVER_INVITE">
-    <img src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord&logoColor=white"/>
+  <a href="https://discord.gg/3vfqhtgZM5">
+    <img src="https://img.shields.io/badge/Join_Us-In_Discord-5865F2?style=flat&logo=discord&logoColor=white"/>
   </a>
   <a href="https://twitter.com/YOUR_HANDLE">
-    <img src="https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=flat&logo=twitter&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Twitter-Follow_Us-1DA1F2?style=flat&logo=twitter&logoColor=white"/>
   </a>
   <a href="https://YOUR_WEBSITE_URL/terms">
     <img src="https://img.shields.io/badge/Terms%20of%20Service-Read-blue?style=flat&logo=markdown"/>
@@ -24,9 +24,19 @@
   </a>
   <br>
   <a href="https://robo159.github.io">
-    <img src="https://img.shields.io/badge/Website-Visit-0A66C2?style=flat&logo=google-chrome&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Robtic_Web-0A66C2?style=flat&logo=google-chrome&logoColor=white"/>
   </a>
   <a href="https://github.com/robo159/assets/blob/main/config/">
     <img src="https://img.shields.io/badge/Config-Open-FFD43B?style=flat&logo=gear&logoColor=black"/>
   </a>
 </p>
+
+## Contents Structure
+1. [Introduction](#introduction)
+2. []()
+3. []()
+4. []()
+5. []()
+
+## Introduction
+robtic 

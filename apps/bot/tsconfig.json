@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "composite": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
@@ -27,7 +27,7 @@
     }
   },
   "include": [
-    "src"
+    "src", "utils"
   ],
   "references": [
     {

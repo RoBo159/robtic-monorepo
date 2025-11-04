@@ -1,5 +1,5 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
-import type { CommandType } from "types/client";
+import type { CommandType } from "@shared/types/client";
 
 const client = new Client({
     intents: [
@@ -11,7 +11,5 @@ const client = new Client({
         GatewayIntentBits.MessageContent
     ]
 });
-
-client.commands = new Collection<string, CommandType>();
 
 export default client;
