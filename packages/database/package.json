@@ -1,0 +1,27 @@
+{
+  "name": "@robo/db",
+  "type": "module",
+  "module": "dist/db.js",
+  "main": "dist/db.js",
+  "scripts": {
+    "generate": "bunx prisma generate --schema=./prisma/schema.prisma",
+    "migrate": "bunx prisma migrate dev --name init --schema=./prisma/schema.prisma",
+    "studio": "bunx prisma studio --schema=./prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "@prisma/extension-accelerate": "^2.0.2",
+    "pg": "^8.16.3",
+    "prisma": "^6.19.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.5.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./db.ts",
+      "require": "./db.ts"
+    }
+  }
+}
