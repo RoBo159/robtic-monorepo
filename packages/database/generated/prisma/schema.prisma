@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PanelType {
+  BUTTON
+  MENU
+}
+
+enum TicketStatus {
+  OPEN
+  CLOSED
+}
+
+model Guild {
+  id        String   @id @default(uuid())
+  config    Json? // guild-level settings, roles, permissions, etc.
+  panels    Panel[]
+  createdAt DateTime @default(now())
+}
+
+model Panel {
+  id           String         @id @default(uuid())
+  guildId      String
+  guild        Guild          @relation(fields: [guildId], references: [id])
+  name         String
+  type         PanelType      @default(BUTTON)
+  placeholder  String?
+  templateId   String?
+  template     PanelTemplate? @relation(fields: [templateId], references: [id])
+  ticketPanels TicketPanel[]
+  embed        Json? // embed config (author, footer, fields, color, etc.)
+
+  createdAt DateTime @default(now())
+}
+
+model PanelTemplate {
+  id        String   @id @default(uuid())
+  name      String
+  data      Json? // pre-saved panel structure
+  createdAt DateTime @default(now())
+  panels    Panel[]
+}
+
+model TicketPanel {
+  id          String       @id @default(uuid())
+  panelId     String
+  panel       Panel        @relation(fields: [panelId], references: [id])
+  name        String
+  description String?
+  emoji       String?
+  style       String
+  hasForm     Boolean      @default(false)
+  maintenance Boolean      @default(false)
+  status      Boolean      @default(true)
+  formId      String?
+  form        FormData?    @relation(fields: [formId], references: [id])
+  buttons     ButtonData[]
+  tickets     Ticket[]
+  data        Json? // embed, permissions, roles, channels, etc.
+
+  createdAt DateTime @default(now())
+}
+
+model Ticket {
+  id        String       @id
+  panelId   String
+  panel     TicketPanel  @relation(fields: [panelId], references: [id])
+  claimer   String?
+  status    TicketStatus @default(OPEN)
+  embed     Json? // actual ticket message embed
+  data      Json? // transcript, metadata, etc.
+  createdAt DateTime     @default(now())
+}
+
+model FormData {
+  id           String        @id @default(uuid())
+  name         String
+  questions    Question[]
+  ticketPanels TicketPanel[]
+}
+
+model Question {
+  id          String   @id @default(uuid())
+  formId      String
+  form        FormData @relation(fields: [formId], references: [id])
+  name        String
+  placeholder String?
+  required    Boolean  @default(true)
+  style       String   @default("SHORT") // short / paragraph
+  minLength   Int?
+  maxLength   Int?
+}
+
+model ButtonData {
+  id            String      @id @default(uuid())
+  ticketPanelId String
+  ticketPanel   TicketPanel @relation(fields: [ticketPanelId], references: [id])
+  name          String
+  style         String
+  emoji         String?
+  config        Json? // for dynamic button behavior / permissions
+}

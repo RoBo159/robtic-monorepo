@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from "fs"
 import path from "path"
 import { BotError, handleError } from "@/handlers/error.handler"
-import { Logger } from "./logger"
+import { Logger } from "@shared/utils/logger"
 
 export class Loader {
     constructor(private basePath: string) { }

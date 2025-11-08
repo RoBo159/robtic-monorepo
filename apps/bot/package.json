@@ -1,15 +1,14 @@
 {
   "name": "@robo/bot",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/bot.js",
+  "types": "dist/bot.d.ts",
   "scripts": {
     "build": "tsc -b",
-    "dev": "bun --watch src/index.ts",
+    "dev": "bun --watch src/bot.ts",
     "test": "bun test"
   },
   "dependencies": {
-    "chalk": "^5.6.2",
     "discord.js": "^14.23.2",
     "dotenv": "^17.2.3",
     "mongodb": "^6.20.0",

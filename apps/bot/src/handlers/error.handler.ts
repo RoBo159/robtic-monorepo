@@ -1,4 +1,4 @@
-import { Logger } from "utils/logger"
+import { Logger } from "@shared/utils/logger"
 
 type errorType = "COMMAND" | "EVENT" | "DATABASE";
 

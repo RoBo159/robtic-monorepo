@@ -5,6 +5,6 @@
         "rootDir": ".",
         "outDir": "dist"
     },
-    "include": ["models", "services", "types", "utils"],
+    "include": ["types", "utils"],
     "references": [{ "path": "../config" }]
 }

@@ -1,0 +1,16 @@
+{
+    "name": "@robo/shared",
+    "type": "module",
+    "module": "dist/main.js",
+    "main": "dist/main.js",
+    "devDependencies": {
+        "@types/bun": "latest",
+        "typescript": "^5.5.0"
+    },
+    "exports": {
+        ".": {
+            "import": "./main.ts",
+            "require": "./main.ts"
+        }
+    }
+}

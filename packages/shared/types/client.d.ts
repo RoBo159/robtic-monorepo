@@ -7,7 +7,7 @@ import {
 
 export interface CommandType {
     data: any;
-    execute: (interaction: ChatInputCommandInteraction, client: Client) => Promise<any>;
+    run: (interaction: ChatInputCommandInteraction, client: Client) => Promise<any>;
     access?: boolean;
 }
 

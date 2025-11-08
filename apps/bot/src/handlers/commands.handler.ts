@@ -1,13 +1,13 @@
 import client from "@/lib/Client";
-import env from "config/env";
+import env from "@robo/config/env.js";
 import { REST, Routes } from "discord.js";
 import { Loader } from "utils/loader";
-import { Logger } from "utils/logger";
+import { Logger } from "@robo/shared";
 
 const handler = new Loader("src");
 
-export function LoadCommands() {
-    handler.load("commands", async (filePath) => {
+export async function LoadCommands() {
+    await handler.load("commands", async (filePath) => {
         const command = (await import(filePath)).default;
 
         if ('data' in command && 'run' in command) {
@@ -21,18 +21,20 @@ export function LoadCommands() {
 export async function registeCommands() {
     const rest = new REST({ version: '9' }).setToken(env.token.value!);
 
-    try {
-        Logger.debug(`Started refreshing ${client.commands.size} application (/) commands.`);
+    (async () => {
+        try {
+            Logger.debug(`Started refreshing ${client.commands.size} application (/) commands.`);
 
-        const data: any = await rest.put(
-            process.env.NODE_ENV === "dev" ?
-                Routes.applicationGuildCommands(env.clientId.value!, env.guildId.value!) :
-                Routes.applicationCommands(env.clientId.value!),
-            { body: client.commands.map(cmd => cmd.data.toJSON()) }
-        );
+            const data: any = await rest.put(
+                process.env.NODE_ENV === "dev" ?
+                    Routes.applicationGuildCommands(env.clientId.value!, env.guildId.value!) :
+                    Routes.applicationCommands(env.clientId.value!),
+                { body: client.commands.map(cmd => cmd.data.toJSON()) }
+            );
 
-        Logger.debug(`Successfully reloaded ${data.length} application (/) commands.`)
-    } catch (err: unknown) {
-        Logger.error(err as string);
-    };
+            Logger.debug(`Successfully reloaded ${data.length} application (/) commands.`)
+        } catch (err: unknown) {
+            Logger.error(err as string);
+        };
+    })();
 }

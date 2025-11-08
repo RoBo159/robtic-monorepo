@@ -10,6 +10,10 @@
         "build:apps": "bun run --filter './apps/*' build",
         "build:packages": "bun run --filter './packages/*' build",
         "dev": "bun run --filter './apps/*' dev",
+        "dev:bot": "bun run --filter @robo/bot dev",
+        "build:db": "bun run --filter @robo/db generate",
+        "create:db": "bun run --filter @robo/db migrate",
+        "open:db": "bun run --filter @robo/db studio",
         "test": "bun run --filter './**' test"
     },
     "devDependencies": {
@@ -19,6 +23,7 @@
         "typescript": "^5.0.0"
     },
     "dependencies": {
-        "chalk": "^5.6.2"
+        "chalk": "^5.6.2",
+        "dotenv": "^17.2.3"
     }
 }

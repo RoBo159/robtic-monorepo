@@ -14,17 +14,17 @@ export default {
                 throw new Error(`❌ No command matching "${interaction.commandName}" was found`);
             };
 
-            await command.execute(interaction, client);
+            await command.run(interaction, client);
         } catch (err: unknown) {
             new BotError(`there is error in events/InteractionCreate ( line 19 )`, "EVENT");
             if (interaction.replied || interaction.deferred) {
                 await interaction.followUp({
-                    content: 'There was an error while executing this command!',
+                    content: `There was an error while executing this command! ${err}`,
                     flags: MessageFlags.Ephemeral,
                 });
             } else {
                 await interaction.reply({
-                    content: 'There was an error while executing this command!',
+                    content: `There was an error while executing this command! ${err}`,
                     flags: MessageFlags.Ephemeral,
                 });
             }
