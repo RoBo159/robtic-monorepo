@@ -1,8 +1,8 @@
 import client from "@/lib/Client";
-import env from "@config/src/env";
+import env from "@robo/config/env.js";
 import { REST, Routes } from "discord.js";
 import { Loader } from "utils/loader";
-import { Logger } from "@shared/utils/logger";
+import { Logger } from "@robo/shared";
 
 const handler = new Loader("src");
 

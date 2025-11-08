@@ -18,13 +18,7 @@ export default {
         else if (interaction.isSelectMenu())
             found = data.find(e => e._id === interaction.values[0]);
 
-        if (!found) {
-            await InteractionUtils.safeReply(
-                interaction,
-                "❌ Cannot find this ticket type."
-            );
-            return;
-        }
+        if (!found) return;
 
         if (!found.form) {
             await InteractionUtils.safeDefer(interaction);

@@ -20,7 +20,7 @@ export class Modal {
                 .setLabel(questionFound.label)
                 .setPlaceholder(questionFound.placeholder)
                 .setStyle(questionFound.style);
-
+                
             const q = new ActionRowBuilder<TextInputBuilder>().addComponents(question);
             modal.addComponents(q);
         };

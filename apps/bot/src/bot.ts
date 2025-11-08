@@ -1,20 +1,18 @@
 import client from "lib/Client";
 import "dotenv/config";
 
-import env from "@config/src/env";
+import env from "@robo/config/env.js";
 
-import { Logger } from "@shared/utils/logger";
-import { connectDB } from "@config/src/database";
+import { Logger } from "@robo/shared";
 
 import { Collection } from "discord.js";
-import { CommandType } from "@shared/types/client";
+import { CommandType } from "@robo/shared";
 
 client.commands = new Collection<string, CommandType>();
 
 import "@/handlers/events.handler";
 import { LoadCommands, registeCommands } from "./handlers/commands.handler";
 
-connectDB();
 await LoadCommands();
 await registeCommands();
 
