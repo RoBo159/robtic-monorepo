@@ -9,6 +9,7 @@
         "build": "bun run build:packages && bun run build:apps",
         "build:apps": "bun run --filter './apps/*' build",
         "build:packages": "bun run --filter './packages/*' build",
+        "build:config": "bun run --filter @robo/config build",
         "dev": "bun run --filter './apps/*' dev",
         "dev:bot": "bun run --filter @robo/bot dev",
         "build:db": "bun run --filter @robo/db generate",

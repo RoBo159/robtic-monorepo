@@ -1,11 +1,27 @@
 {
     "name": "@robo/config",
     "type": "module",
+    "scripts": {
+        "build": "bun build ./src/*.ts --outdir ./dist --target node"
+    },
     "devDependencies": {
         "@types/bun": "latest",
         "typescript": "^5.5.0"
     },
+    "module": "dist/env.js",
+    "main": "dist/env.js",
     "exports": {
-        "./*": "./src/*"
+        ".": {
+            "import": "./dist/env.js",
+            "require": "./dist/env.js"
+        },
+        "./env": {
+            "import": "./dist/env.js",
+            "require": "./dist/env.js"
+        },
+        "./database": {
+            "import": "./dist/database.js",
+            "require": "./dist/database.js"
+        }
     }
 }

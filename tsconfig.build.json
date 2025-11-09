@@ -10,11 +10,14 @@
         "forceConsistentCasingInFileNames": true,
         "baseUrl": ".",
         "paths": {
-            "@shared/*": [
-                "packages/shared/src/*"
+            "@robo/shared": [
+                "packages/shared/*"
             ],
-            "@config/*": [
-                "packages/config/src/*"
+            "@robo/config": [
+                "packages/config/*"
+            ],
+            "@robo/db": [
+                "packages/db/*"
             ]
         }
     }
