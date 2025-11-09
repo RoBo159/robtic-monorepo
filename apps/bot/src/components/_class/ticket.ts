@@ -1,4 +1,3 @@
-import { dataProps } from "@/lib/data";
 import { InteractionUtils } from "@/lib/interactionUtils";
 import { Interaction } from "discord.js";
 import { TicketService } from "@/service/ticket";
@@ -8,7 +7,7 @@ export class Ticket {
         private ticket = new TicketService()
     ) { }
 
-    async create(interaction: Interaction, data?: dataProps) {
+    async create(interaction: Interaction, data?: any) {
         try {
             await InteractionUtils.safeDefer(interaction);
             this.ticket.create(interaction, data);
