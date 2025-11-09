@@ -1,7 +1,7 @@
 import client from "lib/Client";
 import "dotenv/config";
 
-import env from "@robo/config/env.js";
+import env from "@robo/config/env";
 
 import { Logger } from "@robo/shared";
 
