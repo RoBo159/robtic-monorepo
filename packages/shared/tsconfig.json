@@ -5,6 +5,6 @@
         "rootDir": ".",
         "outDir": "dist"
     },
-    "include": ["types", "utils"],
+    "include": ["main.ts", "types", "utils"],
     "references": [{ "path": "../config" }]
 }
