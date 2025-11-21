@@ -1,23 +1,13 @@
 {
+  "extends": "./tsconfig.base.json",
   "files": [],
   "references": [
-    {
-      "path": "apps/bot"
-    },
-    {
-      "path": "apps/dashboard"
-    },
-    {
-      "path": "apps/admin/interface"
-    },
-    {
-      "path": "apps/admin/server"
-    },
-    {
-      "path": "packages/config"
-    },
-    {
-      "path": "packages/shared"
-    }
+    { "path": "apps/bot" },
+    { "path": "apps/dashboard" },
+    { "path": "apps/admin/interface" },
+    { "path": "apps/admin/server" },
+    { "path": "packages/config" },
+    { "path": "packages/database" },
+    { "path": "packages/shared" }
   ]
 }

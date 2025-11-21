@@ -10,12 +10,21 @@
         "build:apps": "bun run --filter './apps/*' build",
         "build:packages": "bun run --filter './packages/*' build",
         "build:config": "bun run --filter @robo/config build",
+        "build:logger": "bun run --filter @robo/logger build",
+        "build:shared": "bun run --filter @robo/shared build",
+        "build:db": "bun run --filter @robo/db generate",
+
         "dev": "bun run --filter './apps/*' dev",
         "dev:bot": "bun run --filter @robo/bot dev",
-        "build:db": "bun run --filter @robo/db generate",
+        "dev:logger": "bun run --filter @robo/logger dev",
+        "dev:db": "bun run --filter @robo/db studio",
+        
         "create:db": "bun run --filter @robo/db migrate",
-        "open:db": "bun run --filter @robo/db studio",
-        "test": "bun run --filter './**' test"
+
+        "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+        "lint:logger": "bun run --filter @robo/logger lint",
+        "test": "bun run --filter './**' test",
+        "typecheck": "tsc -b tsconfig.build.json"
     },
     "devDependencies": {
         "@types/bun": "latest"
@@ -24,6 +33,7 @@
         "typescript": "^5.0.0"
     },
     "dependencies": {
+        "@napi-rs/canvas": "^0.1.82",
         "chalk": "^5.6.2",
         "dotenv": "^17.2.3"
     }

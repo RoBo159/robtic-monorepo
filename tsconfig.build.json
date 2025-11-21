@@ -1,24 +1,3 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "Bundler",
-        "strict": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "baseUrl": ".",
-        "paths": {
-            "@robo/shared": [
-                "packages/shared/*"
-            ],
-            "@robo/config": [
-                "packages/config/*"
-            ],
-            "@robo/db": [
-                "packages/db/*"
-            ]
-        }
-    }
+    "extends": "./tsconfig.json"
 }
