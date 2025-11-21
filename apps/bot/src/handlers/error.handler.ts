@@ -1,4 +1,4 @@
-import { Logger } from "@robo/shared"
+import { Logger } from "@robo/logger"
 
 type errorType = "COMMAND" | "EVENT" | "DATABASE";
 

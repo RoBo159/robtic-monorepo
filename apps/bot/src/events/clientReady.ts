@@ -1,6 +1,6 @@
 import { BotError } from "@/handlers/error.handler";
 import { Client, Events } from "discord.js";
-import { Logger } from "@robo/shared";
+import { Logger } from "@robo/logger";
 
 export default {
     name: Events.ClientReady,

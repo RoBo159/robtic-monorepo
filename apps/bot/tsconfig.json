@@ -1,34 +1,22 @@
 {
-  "extends": "../../tsconfig.build.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "types/*": [
-        "types/*"
-      ],
-      "utiles/*": [
-        "utiles/*"
-      ],
-      "lib/*": [
-        "src/lib/*"
-      ]
+      "@/*": ["src/*"],
+      "utiles/*": ["src/utiles/*"],
+      "lib/*": ["src/lib/*"]
     }
   },
-  "include": [
-    "src", "utils"
-  ],
+  "include": ["src", "tests"],
+  "exclude": ["dist"],
   "references": [
-    {
-      "path": "../../packages/shared"
-    },
-    {
-      "path": "../../packages/config"
-    }
+    { "path": "../../packages/shared" },
+    { "path": "../../packages/config" },
+    { "path": "../../packages/database" },
+    { "path": "../../packages/logger" }
   ]
 }

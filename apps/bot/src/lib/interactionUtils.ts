@@ -1,4 +1,5 @@
 import { Interaction, MessageFlags } from "discord.js";
+import { Logger } from "@robo/logger";
 
 /**
  * Utility functions to safely interact with Discord interactions.
@@ -21,7 +22,6 @@ export class InteractionUtils {
             if (interaction.replied) {
                 await interaction.followUp({
                     content,
-                    ephemeral,
                     flags: ephemeral ? MessageFlags.Ephemeral : undefined,
                 });
                 return;
@@ -36,11 +36,10 @@ export class InteractionUtils {
 
             await interaction.reply({
                 content,
-                ephemeral,
                 flags: ephemeral ? MessageFlags.Ephemeral : undefined,
             });
         } catch (err) {
-            console.error("[InteractionUtils.safeReply] Error:", err);
+            Logger.error("[InteractionUtils.safeReply] Error:", err);
         }
     }
 
@@ -52,9 +51,9 @@ export class InteractionUtils {
             if (!interaction.isRepliable()) return;
             if (interaction.deferred || interaction.replied) return;
 
-            await interaction.deferReply({ ephemeral });
+            await interaction.deferReply({ flags: ephemeral ? MessageFlags.Ephemeral : undefined });
         } catch (err) {
-            console.error("[InteractionUtils.safeDefer] Error:", err);
+            Logger.error("[InteractionUtils.safeDefer] Error:", err);
         }
     }   
 }

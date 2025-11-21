@@ -1,13 +1,13 @@
-import { data } from "@/lib/data";
-import { Events, Interaction } from "discord.js";
+import { Events, Channel } from "discord.js";
+import { TicketService } from "@robo/db";
 
 export default {
     name: Events.ChannelDelete,
-    run: (interaction : Interaction) => {
-        if(!interaction.channel?.isTextBased()) return;
-        const found = data.find(e => e._id === interaction.id);
-        if(!found) return;
+    run: async (channel: Channel) => {
+        const ticket = new TicketService();
 
-        console.log("ticket channel was removed")
+        if (!channel.isTextBased()) return;
+
+        await ticket.delete(channel.id); 
     }
 }

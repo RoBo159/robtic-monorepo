@@ -1,8 +1,10 @@
 import { Events, Interaction } from "discord.js";
-import { prisma, TicketService } from "@robo/db";
+import { FormService, TicketService } from "@robo/db";
 import { Ticket } from "@/components/_class/ticket";
 import { Modal } from "./_class/modal";
 import { InteractionUtils } from "@/lib/interactionUtils";
+import TicektAccess from "@/utils/interaction/ticektAccess";
+import { Logger } from "@robo/logger";
 
 export default {
     name: Events.InteractionCreate,
@@ -13,36 +15,45 @@ export default {
         const ticket = new Ticket();
         const modal = new Modal();
         const ticketData = new TicketService();
+        const formData = new FormService();
 
         try {
+
+            const checkIsTicket = interaction.isButton()
+                ? interaction.customId.startsWith("ticket_")
+                : interaction.customId.startsWith("menu_");
+
+            if (!checkIsTicket) return;
+
             const ticketId = interaction.isButton()
                 ? interaction.customId.replace("ticket_", "")
                 : interaction.values[0];
 
+                
             const found = await ticketData.panelFind(ticketId);
 
+            
             if (!found) return;
 
-            if (!found.hasForm || !found.formId) {
+            if (await TicektAccess(interaction, found?.id)) {
                 await InteractionUtils.safeDefer(interaction);
-                await ticket.create(interaction, found);
+                await InteractionUtils.safeReply(interaction, "❌ you already have a ticket open");
                 return;
+            };
+            
+            if (found?.hasForm && found?.formId) {
+                const formFound = await formData.find(found.formId);
+
+                if (formFound) {
+                    return modal.create(interaction, formFound);
+                }
             }
 
-            const formFound = await prisma.formData.findUnique({
-                where: { id: found.formId },
-                include: { questions: true },
-            });
+            await InteractionUtils.safeDefer(interaction);
 
-            if (!formFound) {
-                await InteractionUtils.safeDefer(interaction);
-                await ticket.create(interaction, found);
-                return;
-            }
-
-            modal.create(interaction, formFound);
+            return ticket.create(interaction, found);
         } catch (err) {
-            console.error("[TicketHandler Prisma Error]", err);
+            Logger.error("[TicketHandler]", err);
             await InteractionUtils.safeReply(
                 interaction,
                 "❌ Failed to process this interaction. Please try again."

@@ -1,25 +1,28 @@
-import { questionData } from "@/lib/data";
-import { ActionRowBuilder, ButtonInteraction, Interaction, ModalBuilder, SelectMenuInteraction, TextInputBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonInteraction, Interaction, ModalBuilder, SelectMenuInteraction, TextInputBuilder, TextInputStyle } from "discord.js";
+import { FormDataProps } from "@robo/shared";
+import { prisma } from "@robo/db";
 
 export class Modal {
     constructor() { };
 
-    create(interaction : Interaction, data?: any) {
+    async create(interaction : Interaction, data?: FormDataProps) {
         if(!data) return;
 
         const modal = new ModalBuilder()
-            .setCustomId(data._id)
+            .setCustomId(data.id)
             .setTitle(data.name);
 
-        for (let i = 0; i < data.questionsId.length; i++) {
-            const questionFound = questionData.find(e => e._id === data.questionsId[i]);
+        for (let i = 0; i < data.questions?.length!; i++) {
+            const questionFound = await prisma.question.findMany({
+                where: { formId: data.id, id: data.questions![i].id }
+            });
 
             if (!questionFound) break;
             const question = new TextInputBuilder()
-                .setCustomId(questionFound._id)
-                .setLabel(questionFound.label)
-                .setPlaceholder(questionFound.placeholder)
-                .setStyle(questionFound.style);
+                .setCustomId(questionFound[0].id)
+                .setLabel(questionFound[0].name)
+                .setPlaceholder(questionFound[0].placeholder || "")
+                .setStyle(questionFound[0].style === "PARAGRAPH" ? TextInputStyle.Paragraph : TextInputStyle.Short);
                 
             const q = new ActionRowBuilder<TextInputBuilder>().addComponents(question);
             modal.addComponents(q);
