@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Logger } from "@shared/utils/logger";
+import { Logger } from "@robo/logger";
 
 interface EnvVar {
     value: string | undefined;

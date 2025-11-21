@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Logger } from "@shared/utils/logger";
+import { Logger } from "@robo/logger";
 
 export async function connectDB() {
     try {

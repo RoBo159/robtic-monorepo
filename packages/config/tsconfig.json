@@ -1,14 +1,22 @@
 {
-    "extends": "../../tsconfig.build.json",
+    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
         "composite": true,
         "rootDir": "src",
-        "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "@shared/*": ["../shared/*"]
-        }
+        "outDir": "dist"
     },
-    "include": ["src"],
-    "references": [{ "path": "../shared" }]
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "dist"
+    ],
+    "references": [
+        {
+            "path": "../shared"
+        },
+        {
+            "path": "../logger"
+        }
+    ]
 }
