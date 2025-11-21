@@ -1,5 +1,6 @@
-import { prisma, TicketService } from "packages/database/db";
+import { prisma, TicketService } from "@robo/db";
 import { DefaultEmbed } from "../default/embed";
+import { Logger } from "@robo/logger";
 
 const ticket = new TicketService();
 
@@ -21,11 +22,11 @@ export class PanelService {
             })
 
             await ticket.panelCreate(panel.id);
-            console.log("done create panel");
+            Logger.database("done create panel");
 
             return panel;
         } catch (error) {
-            console.error(`❌ Failed to create Panel`, error);
+            Logger.error(`❌ Failed to create Panel`, error);
         }
     }
 
@@ -38,7 +39,7 @@ export class PanelService {
 
             return panel;
         } catch (error) {
-            console.error(`❌ Failed to find panel`, error);
+            Logger.error(`❌ Failed to find panel`, error);
             throw error;
         }
     }

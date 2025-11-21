@@ -1,14 +1,14 @@
-import { prisma } from "packages/database/db";
+import { prisma } from "@robo/db";
 
 export class FormService {
     async create() {
 
     }
 
-    async find(formId : string) {
+    async find(id : string) {
         const formFound = await prisma.formData.findUnique({
-            where: { id: formId },
-            include: { questions: true },
+            where: { id },
+            include: { questions: true, ticketPanels: true },
         });
 
         return formFound;

@@ -1,4 +1,5 @@
 import { prisma } from "@robo/db";
+import { Logger } from "@robo/logger";
 
 export class GuildService {
     async ensureGuild(guildId: string) {
@@ -11,10 +12,10 @@ export class GuildService {
                     config: {}
                 }
             });
-            console.log(`✅ Guild ${guildId} created in database`);
+            Logger.database(`✅ Guild ${guildId} created in database`);
             return guild;
         } catch (error) {
-            console.error(`❌ Failed to create guild ${guildId}:`, error);
+            Logger.error(`❌ Failed to create guild ${guildId}:`, error);
         }
     }
 }

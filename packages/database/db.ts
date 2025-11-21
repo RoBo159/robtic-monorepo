@@ -13,7 +13,7 @@ import { PanelService } from "./src/services/panel.service";
 import { FormService } from "./src/services/form.service";
 
 // --- Types Export ---
-import { Guild, TicketPanel, Ticket, Panel } from "./generated/prisma";
+import { Guild, TicketPanel, Ticket, Panel, FormData } from "./generated/prisma";
 
 // --- Main Exports ---
 export {
@@ -25,5 +25,6 @@ export {
     type TicketPanel,
     type Ticket,
     type Panel,
+    type FormData,
     prisma
 };
