@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "paths": {
+            "@robo/shared": [
+                "packages/shared/main.ts"
+            ],
+            "@robo/shared/*": [
+                "packages/shared/*"
+            ],
+            "@shared/*": [
+                "packages/shared/*"
+            ],
+            "@robo/config": [
+                "packages/config/src/env.ts"
+            ],
+            "@robo/config/*": [
+                "packages/config/src/*"
+            ],
+            "@robo/db": [
+                "packages/database/db.ts"
+            ],
+            "@robo/db/*": [
+                "packages/database/src/*"
+            ],
+            "@robo/logger": [
+                "packages/logger/src/index.ts"
+            ]
+        }
+    }
+}

@@ -156,12 +156,14 @@ exports.Prisma.TicketPanelScalarFieldEnum = {
   maintenance: 'maintenance',
   status: 'status',
   formId: 'formId',
+  channels: 'channels',
   data: 'data',
   createdAt: 'createdAt'
 };
 
 exports.Prisma.TicketScalarFieldEnum = {
   id: 'id',
+  userId: 'userId',
   panelId: 'panelId',
   claimer: 'claimer',
   status: 'status',

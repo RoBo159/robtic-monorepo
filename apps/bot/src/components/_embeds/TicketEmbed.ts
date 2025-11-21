@@ -30,5 +30,4 @@ export function Managed() {
             text: "© 2025 RobTic — All rights reserved",
             iconURL: "https://raw.githubusercontent.com/robo159/assets/main/images/robo.jpg"
         });
-
 }

@@ -4991,6 +4991,7 @@ export namespace Prisma {
     maintenance: number
     status: number
     formId: number
+    channels: number
     data: number
     createdAt: number
     _all: number
@@ -5036,6 +5037,7 @@ export namespace Prisma {
     maintenance?: true
     status?: true
     formId?: true
+    channels?: true
     data?: true
     createdAt?: true
     _all?: true
@@ -5124,6 +5126,7 @@ export namespace Prisma {
     maintenance: boolean
     status: boolean
     formId: string | null
+    channels: JsonValue | null
     data: JsonValue | null
     createdAt: Date
     _count: TicketPanelCountAggregateOutputType | null
@@ -5156,6 +5159,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: boolean
+    channels?: boolean
     data?: boolean
     createdAt?: boolean
     panel?: boolean | PanelDefaultArgs<ExtArgs>
@@ -5176,6 +5180,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: boolean
+    channels?: boolean
     data?: boolean
     createdAt?: boolean
     panel?: boolean | PanelDefaultArgs<ExtArgs>
@@ -5193,6 +5198,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: boolean
+    channels?: boolean
     data?: boolean
     createdAt?: boolean
     panel?: boolean | PanelDefaultArgs<ExtArgs>
@@ -5210,11 +5216,12 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: boolean
+    channels?: boolean
     data?: boolean
     createdAt?: boolean
   }
 
-  export type TicketPanelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "panelId" | "name" | "description" | "emoji" | "style" | "hasForm" | "maintenance" | "status" | "formId" | "data" | "createdAt", ExtArgs["result"]["ticketPanel"]>
+  export type TicketPanelOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "panelId" | "name" | "description" | "emoji" | "style" | "hasForm" | "maintenance" | "status" | "formId" | "channels" | "data" | "createdAt", ExtArgs["result"]["ticketPanel"]>
   export type TicketPanelInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     panel?: boolean | PanelDefaultArgs<ExtArgs>
     form?: boolean | TicketPanel$formArgs<ExtArgs>
@@ -5250,6 +5257,7 @@ export namespace Prisma {
       maintenance: boolean
       status: boolean
       formId: string | null
+      channels: Prisma.JsonValue | null
       data: Prisma.JsonValue | null
       createdAt: Date
     }, ExtArgs["result"]["ticketPanel"]>
@@ -5689,6 +5697,7 @@ export namespace Prisma {
     readonly maintenance: FieldRef<"TicketPanel", 'Boolean'>
     readonly status: FieldRef<"TicketPanel", 'Boolean'>
     readonly formId: FieldRef<"TicketPanel", 'String'>
+    readonly channels: FieldRef<"TicketPanel", 'Json'>
     readonly data: FieldRef<"TicketPanel", 'Json'>
     readonly createdAt: FieldRef<"TicketPanel", 'DateTime'>
   }
@@ -6184,6 +6193,7 @@ export namespace Prisma {
 
   export type TicketMinAggregateOutputType = {
     id: string | null
+    userId: string | null
     panelId: string | null
     claimer: string | null
     status: $Enums.TicketStatus | null
@@ -6192,6 +6202,7 @@ export namespace Prisma {
 
   export type TicketMaxAggregateOutputType = {
     id: string | null
+    userId: string | null
     panelId: string | null
     claimer: string | null
     status: $Enums.TicketStatus | null
@@ -6200,6 +6211,7 @@ export namespace Prisma {
 
   export type TicketCountAggregateOutputType = {
     id: number
+    userId: number
     panelId: number
     claimer: number
     status: number
@@ -6212,6 +6224,7 @@ export namespace Prisma {
 
   export type TicketMinAggregateInputType = {
     id?: true
+    userId?: true
     panelId?: true
     claimer?: true
     status?: true
@@ -6220,6 +6233,7 @@ export namespace Prisma {
 
   export type TicketMaxAggregateInputType = {
     id?: true
+    userId?: true
     panelId?: true
     claimer?: true
     status?: true
@@ -6228,6 +6242,7 @@ export namespace Prisma {
 
   export type TicketCountAggregateInputType = {
     id?: true
+    userId?: true
     panelId?: true
     claimer?: true
     status?: true
@@ -6311,6 +6326,7 @@ export namespace Prisma {
 
   export type TicketGroupByOutputType = {
     id: string
+    userId: string | null
     panelId: string
     claimer: string | null
     status: $Enums.TicketStatus
@@ -6338,6 +6354,7 @@ export namespace Prisma {
 
   export type TicketSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     panelId?: boolean
     claimer?: boolean
     status?: boolean
@@ -6349,6 +6366,7 @@ export namespace Prisma {
 
   export type TicketSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     panelId?: boolean
     claimer?: boolean
     status?: boolean
@@ -6360,6 +6378,7 @@ export namespace Prisma {
 
   export type TicketSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    userId?: boolean
     panelId?: boolean
     claimer?: boolean
     status?: boolean
@@ -6371,6 +6390,7 @@ export namespace Prisma {
 
   export type TicketSelectScalar = {
     id?: boolean
+    userId?: boolean
     panelId?: boolean
     claimer?: boolean
     status?: boolean
@@ -6379,7 +6399,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type TicketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "panelId" | "claimer" | "status" | "embed" | "data" | "createdAt", ExtArgs["result"]["ticket"]>
+  export type TicketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "panelId" | "claimer" | "status" | "embed" | "data" | "createdAt", ExtArgs["result"]["ticket"]>
   export type TicketInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     panel?: boolean | TicketPanelDefaultArgs<ExtArgs>
   }
@@ -6397,6 +6417,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      userId: string | null
       panelId: string
       claimer: string | null
       status: $Enums.TicketStatus
@@ -6828,6 +6849,7 @@ export namespace Prisma {
    */
   interface TicketFieldRefs {
     readonly id: FieldRef<"Ticket", 'String'>
+    readonly userId: FieldRef<"Ticket", 'String'>
     readonly panelId: FieldRef<"Ticket", 'String'>
     readonly claimer: FieldRef<"Ticket", 'String'>
     readonly status: FieldRef<"Ticket", 'TicketStatus'>
@@ -10567,6 +10589,7 @@ export namespace Prisma {
     maintenance: 'maintenance',
     status: 'status',
     formId: 'formId',
+    channels: 'channels',
     data: 'data',
     createdAt: 'createdAt'
   };
@@ -10576,6 +10599,7 @@ export namespace Prisma {
 
   export const TicketScalarFieldEnum: {
     id: 'id',
+    userId: 'userId',
     panelId: 'panelId',
     claimer: 'claimer',
     status: 'status',
@@ -10960,6 +10984,7 @@ export namespace Prisma {
     maintenance?: BoolFilter<"TicketPanel"> | boolean
     status?: BoolFilter<"TicketPanel"> | boolean
     formId?: StringNullableFilter<"TicketPanel"> | string | null
+    channels?: JsonNullableFilter<"TicketPanel">
     data?: JsonNullableFilter<"TicketPanel">
     createdAt?: DateTimeFilter<"TicketPanel"> | Date | string
     panel?: XOR<PanelScalarRelationFilter, PanelWhereInput>
@@ -10979,6 +11004,7 @@ export namespace Prisma {
     maintenance?: SortOrder
     status?: SortOrder
     formId?: SortOrderInput | SortOrder
+    channels?: SortOrderInput | SortOrder
     data?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     panel?: PanelOrderByWithRelationInput
@@ -11001,6 +11027,7 @@ export namespace Prisma {
     maintenance?: BoolFilter<"TicketPanel"> | boolean
     status?: BoolFilter<"TicketPanel"> | boolean
     formId?: StringNullableFilter<"TicketPanel"> | string | null
+    channels?: JsonNullableFilter<"TicketPanel">
     data?: JsonNullableFilter<"TicketPanel">
     createdAt?: DateTimeFilter<"TicketPanel"> | Date | string
     panel?: XOR<PanelScalarRelationFilter, PanelWhereInput>
@@ -11020,6 +11047,7 @@ export namespace Prisma {
     maintenance?: SortOrder
     status?: SortOrder
     formId?: SortOrderInput | SortOrder
+    channels?: SortOrderInput | SortOrder
     data?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: TicketPanelCountOrderByAggregateInput
@@ -11041,6 +11069,7 @@ export namespace Prisma {
     maintenance?: BoolWithAggregatesFilter<"TicketPanel"> | boolean
     status?: BoolWithAggregatesFilter<"TicketPanel"> | boolean
     formId?: StringNullableWithAggregatesFilter<"TicketPanel"> | string | null
+    channels?: JsonNullableWithAggregatesFilter<"TicketPanel">
     data?: JsonNullableWithAggregatesFilter<"TicketPanel">
     createdAt?: DateTimeWithAggregatesFilter<"TicketPanel"> | Date | string
   }
@@ -11050,6 +11079,7 @@ export namespace Prisma {
     OR?: TicketWhereInput[]
     NOT?: TicketWhereInput | TicketWhereInput[]
     id?: StringFilter<"Ticket"> | string
+    userId?: StringNullableFilter<"Ticket"> | string | null
     panelId?: StringFilter<"Ticket"> | string
     claimer?: StringNullableFilter<"Ticket"> | string | null
     status?: EnumTicketStatusFilter<"Ticket"> | $Enums.TicketStatus
@@ -11061,6 +11091,7 @@ export namespace Prisma {
 
   export type TicketOrderByWithRelationInput = {
     id?: SortOrder
+    userId?: SortOrderInput | SortOrder
     panelId?: SortOrder
     claimer?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -11075,6 +11106,7 @@ export namespace Prisma {
     AND?: TicketWhereInput | TicketWhereInput[]
     OR?: TicketWhereInput[]
     NOT?: TicketWhereInput | TicketWhereInput[]
+    userId?: StringNullableFilter<"Ticket"> | string | null
     panelId?: StringFilter<"Ticket"> | string
     claimer?: StringNullableFilter<"Ticket"> | string | null
     status?: EnumTicketStatusFilter<"Ticket"> | $Enums.TicketStatus
@@ -11086,6 +11118,7 @@ export namespace Prisma {
 
   export type TicketOrderByWithAggregationInput = {
     id?: SortOrder
+    userId?: SortOrderInput | SortOrder
     panelId?: SortOrder
     claimer?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -11102,6 +11135,7 @@ export namespace Prisma {
     OR?: TicketScalarWhereWithAggregatesInput[]
     NOT?: TicketScalarWhereWithAggregatesInput | TicketScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Ticket"> | string
+    userId?: StringNullableWithAggregatesFilter<"Ticket"> | string | null
     panelId?: StringWithAggregatesFilter<"Ticket"> | string
     claimer?: StringNullableWithAggregatesFilter<"Ticket"> | string | null
     status?: EnumTicketStatusWithAggregatesFilter<"Ticket"> | $Enums.TicketStatus
@@ -11472,6 +11506,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     panel: PanelCreateNestedOneWithoutTicketPanelsInput
@@ -11491,6 +11526,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     buttons?: ButtonDataUncheckedCreateNestedManyWithoutTicketPanelInput
@@ -11506,6 +11542,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     panel?: PanelUpdateOneRequiredWithoutTicketPanelsNestedInput
@@ -11525,6 +11562,7 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buttons?: ButtonDataUncheckedUpdateManyWithoutTicketPanelNestedInput
@@ -11542,6 +11580,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
@@ -11555,6 +11594,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11570,12 +11610,14 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TicketCreateInput = {
     id: string
+    userId?: string | null
     claimer?: string | null
     status?: $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -11586,6 +11628,7 @@ export namespace Prisma {
 
   export type TicketUncheckedCreateInput = {
     id: string
+    userId?: string | null
     panelId: string
     claimer?: string | null
     status?: $Enums.TicketStatus
@@ -11596,6 +11639,7 @@ export namespace Prisma {
 
   export type TicketUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -11606,6 +11650,7 @@ export namespace Prisma {
 
   export type TicketUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     panelId?: StringFieldUpdateOperationsInput | string
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
@@ -11616,6 +11661,7 @@ export namespace Prisma {
 
   export type TicketCreateManyInput = {
     id: string
+    userId?: string | null
     panelId: string
     claimer?: string | null
     status?: $Enums.TicketStatus
@@ -11626,6 +11672,7 @@ export namespace Prisma {
 
   export type TicketUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -11635,6 +11682,7 @@ export namespace Prisma {
 
   export type TicketUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     panelId?: StringFieldUpdateOperationsInput | string
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
@@ -12128,6 +12176,7 @@ export namespace Prisma {
     maintenance?: SortOrder
     status?: SortOrder
     formId?: SortOrder
+    channels?: SortOrder
     data?: SortOrder
     createdAt?: SortOrder
   }
@@ -12182,6 +12231,7 @@ export namespace Prisma {
 
   export type TicketCountOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     panelId?: SortOrder
     claimer?: SortOrder
     status?: SortOrder
@@ -12192,6 +12242,7 @@ export namespace Prisma {
 
   export type TicketMaxOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     panelId?: SortOrder
     claimer?: SortOrder
     status?: SortOrder
@@ -12200,6 +12251,7 @@ export namespace Prisma {
 
   export type TicketMinOrderByAggregateInput = {
     id?: SortOrder
+    userId?: SortOrder
     panelId?: SortOrder
     claimer?: SortOrder
     status?: SortOrder
@@ -13082,6 +13134,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     form?: FormDataCreateNestedOneWithoutTicketPanelsInput
@@ -13099,6 +13152,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     buttons?: ButtonDataUncheckedCreateNestedManyWithoutTicketPanelInput
@@ -13193,6 +13247,7 @@ export namespace Prisma {
     maintenance?: BoolFilter<"TicketPanel"> | boolean
     status?: BoolFilter<"TicketPanel"> | boolean
     formId?: StringNullableFilter<"TicketPanel"> | string | null
+    channels?: JsonNullableFilter<"TicketPanel">
     data?: JsonNullableFilter<"TicketPanel">
     createdAt?: DateTimeFilter<"TicketPanel"> | Date | string
   }
@@ -13317,6 +13372,7 @@ export namespace Prisma {
 
   export type TicketCreateWithoutPanelInput = {
     id: string
+    userId?: string | null
     claimer?: string | null
     status?: $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -13326,6 +13382,7 @@ export namespace Prisma {
 
   export type TicketUncheckedCreateWithoutPanelInput = {
     id: string
+    userId?: string | null
     claimer?: string | null
     status?: $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -13448,6 +13505,7 @@ export namespace Prisma {
     OR?: TicketScalarWhereInput[]
     NOT?: TicketScalarWhereInput | TicketScalarWhereInput[]
     id?: StringFilter<"Ticket"> | string
+    userId?: StringNullableFilter<"Ticket"> | string | null
     panelId?: StringFilter<"Ticket"> | string
     claimer?: StringNullableFilter<"Ticket"> | string | null
     status?: EnumTicketStatusFilter<"Ticket"> | $Enums.TicketStatus
@@ -13465,6 +13523,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     panel: PanelCreateNestedOneWithoutTicketPanelsInput
@@ -13483,6 +13542,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     buttons?: ButtonDataUncheckedCreateNestedManyWithoutTicketPanelInput
@@ -13513,6 +13573,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     panel?: PanelUpdateOneRequiredWithoutTicketPanelsNestedInput
@@ -13531,6 +13592,7 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buttons?: ButtonDataUncheckedUpdateManyWithoutTicketPanelNestedInput
@@ -13575,6 +13637,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     panel: PanelCreateNestedOneWithoutTicketPanelsInput
@@ -13592,6 +13655,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     buttons?: ButtonDataUncheckedCreateNestedManyWithoutTicketPanelInput
@@ -13703,6 +13767,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     panel: PanelCreateNestedOneWithoutTicketPanelsInput
@@ -13721,6 +13786,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     tickets?: TicketUncheckedCreateNestedManyWithoutPanelInput
@@ -13751,6 +13817,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     panel?: PanelUpdateOneRequiredWithoutTicketPanelsNestedInput
@@ -13769,6 +13836,7 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tickets?: TicketUncheckedUpdateManyWithoutPanelNestedInput
@@ -13826,6 +13894,7 @@ export namespace Prisma {
     maintenance?: boolean
     status?: boolean
     formId?: string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
@@ -13839,6 +13908,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     form?: FormDataUpdateOneWithoutTicketPanelsNestedInput
@@ -13856,6 +13926,7 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buttons?: ButtonDataUncheckedUpdateManyWithoutTicketPanelNestedInput
@@ -13872,6 +13943,7 @@ export namespace Prisma {
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
     formId?: NullableStringFieldUpdateOperationsInput | string | null
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13928,6 +14000,7 @@ export namespace Prisma {
 
   export type TicketCreateManyPanelInput = {
     id: string
+    userId?: string | null
     claimer?: string | null
     status?: $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -13961,6 +14034,7 @@ export namespace Prisma {
 
   export type TicketUpdateWithoutPanelInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -13970,6 +14044,7 @@ export namespace Prisma {
 
   export type TicketUncheckedUpdateWithoutPanelInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -13979,6 +14054,7 @@ export namespace Prisma {
 
   export type TicketUncheckedUpdateManyWithoutPanelInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
     claimer?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumTicketStatusFieldUpdateOperationsInput | $Enums.TicketStatus
     embed?: NullableJsonNullValueInput | InputJsonValue
@@ -14006,6 +14082,7 @@ export namespace Prisma {
     hasForm?: boolean
     maintenance?: boolean
     status?: boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
@@ -14049,6 +14126,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     panel?: PanelUpdateOneRequiredWithoutTicketPanelsNestedInput
@@ -14066,6 +14144,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buttons?: ButtonDataUncheckedUpdateManyWithoutTicketPanelNestedInput
@@ -14082,6 +14161,7 @@ export namespace Prisma {
     hasForm?: BoolFieldUpdateOperationsInput | boolean
     maintenance?: BoolFieldUpdateOperationsInput | boolean
     status?: BoolFieldUpdateOperationsInput | boolean
+    channels?: NullableJsonNullValueInput | InputJsonValue
     data?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

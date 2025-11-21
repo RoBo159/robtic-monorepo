@@ -62,6 +62,7 @@ model TicketPanel {
   formId      String?
   form        FormData?    @relation(fields: [formId], references: [id])
   buttons     ButtonData[]
+  channels    Json?
   tickets     Ticket[]
   data        Json? // embed, permissions, roles, channels, etc.
 
@@ -70,6 +71,7 @@ model TicketPanel {
 
 model Ticket {
   id        String       @id
+  userId    String?      @default("")
   panelId   String
   panel     TicketPanel  @relation(fields: [panelId], references: [id])
   claimer   String?

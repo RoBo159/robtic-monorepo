@@ -1,6 +1,7 @@
 import { BotError } from "@/handlers/error.handler";
 import client from "@/lib/Client";
-import { ChatInputCommandInteraction, Events, MessageFlags } from "discord.js";
+import { InteractionUtils } from "@/lib/interactionUtils";
+import { ChatInputCommandInteraction, Events } from "discord.js";
 
 export default {
     name: Events.InteractionCreate,
@@ -17,17 +18,7 @@ export default {
             await command.run(interaction, client);
         } catch (err: unknown) {
             new BotError(`there is error in events/InteractionCreate ( line 19 )`, "EVENT");
-            if (interaction.replied || interaction.deferred) {
-                await interaction.followUp({
-                    content: `There was an error while executing this command! ${err}`,
-                    flags: MessageFlags.Ephemeral,
-                });
-            } else {
-                await interaction.reply({
-                    content: `There was an error while executing this command! ${err}`,
-                    flags: MessageFlags.Ephemeral,
-                });
-            }
+            InteractionUtils.safeReply(interaction, `There was an error while executing this command! ${err}`);
         }
     }
 }

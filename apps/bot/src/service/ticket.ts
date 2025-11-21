@@ -1,16 +1,19 @@
 import { Created } from "@/components/_embeds/TicketEmbed";
-import { dataProps } from "@/lib/data";
+import { channelProps, TicketProps } from "@robo/shared";
 import { InteractionUtils } from "@/lib/interactionUtils";
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, Interaction, PermissionsBitField, TextChannel } from "discord.js";
+import { ChannelType, Interaction, PermissionsBitField, TextChannel } from "discord.js";
+import { row } from "@/components/_buttons/TicketButtons";
 
-export class TicketService {
+export class TicketUtils {
+
     constructor() { }
 
-    async create(interaction: Interaction, data?: dataProps) {
-        await InteractionUtils.safeDefer(interaction);
+    async create(interaction: Interaction, data?: TicketProps) {
+
+        const channelData = data?.channels as channelProps | null;
 
         const channel = await interaction.guild?.channels.create({
-            parent: data?.category ?? null,
+            parent: channelData!.category ?? null,
             name: `${data?.name || "ticket"}-${interaction.user.username}`,
             type: ChannelType.GuildText,
             permissionOverwrites: [
@@ -25,20 +28,6 @@ export class TicketService {
             ]
         });
 
-        const close = new ButtonBuilder()
-            .setCustomId("close")
-            .setLabel("Close")
-            .setStyle(ButtonStyle.Secondary)
-            .setEmoji("🔒");
-
-        const manage = new ButtonBuilder()
-            .setCustomId("manage")
-            .setLabel("Manage")
-            .setStyle(ButtonStyle.Secondary)
-            .setEmoji("⚙️");
-
-        const button = new ActionRowBuilder<ButtonBuilder>().addComponents(close, manage);
-
         await InteractionUtils.safeReply(
             interaction,
             `✅ Ticket created successfully in ${channel}`
@@ -47,8 +36,10 @@ export class TicketService {
         await channel?.send({
             content: `${interaction.user} welcome`,
             embeds: [Created()],
-            components: [button]
+            components: [row(["close", "manage"])]
         });
+
+        return channel?.id;
     };
 
     async close(interaction : Interaction, channelId : string) {

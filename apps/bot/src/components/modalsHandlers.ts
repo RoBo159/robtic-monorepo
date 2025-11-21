@@ -1,7 +1,7 @@
 import { Events, Interaction } from "discord.js";
 import { Ticket } from "./_class/ticket";
-import { data, formData, questionData } from "@/lib/data";
 import { InteractionUtils } from "@/lib/interactionUtils";
+import { FormService, TicketService } from "@robo/db";
 
 interface valueProps {
     label: string;
@@ -12,15 +12,19 @@ export default {
     name: Events.InteractionCreate,
     run: async (interaction: Interaction) => {
         if (!interaction.isModalSubmit()) return;
+        await InteractionUtils.safeDefer(interaction);
 
-        const found = formData.find(e => e._id === interaction.customId);
+        const ticketData = new TicketService();
+        const formData = new FormService();
+
+        const found = await formData.find(interaction.customId);
         if (!found)
             return await InteractionUtils.safeReply(
                 interaction,
                 "❌ Error: Unknown form submitted.",
             );
 
-        const dataFound = data.find(e => e.formId === found?._id);
+        const dataFound = await ticketData.panelFind(found.ticketPanels.find(tp => tp.formId === found.id)?.id!);
         if (!dataFound)
             return await InteractionUtils.safeReply(
                 interaction,
@@ -28,8 +32,8 @@ export default {
             );
 
         const values: valueProps[] = [];
-        for (const qId of found.questionsId) {
-            const questionFound = questionData.find(e => e._id === qId);
+        for (const qId of found.questions.map(q => q.id)) {
+            const questionFound = found.questions.find(e => e.id === qId);
             if (!questionFound)
                 return await InteractionUtils.safeReply(
                     interaction,
@@ -37,8 +41,8 @@ export default {
                 );
 
             values.push({
-                label: questionFound.label,
-                value: interaction.fields.getTextInputValue(questionFound._id),
+                label: questionFound.name,
+                value: interaction.fields.getTextInputValue(questionFound.id),
             });
         }
 

@@ -1,5 +1,4 @@
-import { Client, Collection, GatewayIntentBits } from "discord.js";
-import type { CommandType } from "@robo/shared";
+import { Client, GatewayIntentBits } from "discord.js";
 
 const client = new Client({
     intents: [
