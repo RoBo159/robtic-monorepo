@@ -13,10 +13,10 @@
     ],
     "references": [
         {
-            "path": "../shared"
+            "path": "../logger"
         },
         {
-            "path": "../logger"
+            "path": "../shared"
         }
     ]
 }

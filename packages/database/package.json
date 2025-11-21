@@ -20,8 +20,8 @@
   },
   "exports": {
     ".": {
-      "import": "./db.ts",
-      "require": "./db.ts"
+      "import": "./src/db.ts",
+      "require": "./src/db.ts"
     }
   }
 }

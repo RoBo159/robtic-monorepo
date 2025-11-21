@@ -9,8 +9,8 @@
     },
     "exports": {
         ".": {
-            "import": "./main.ts",
-            "require": "./main.ts"
+            "import": "./src/main.ts",
+            "require": "./src/main.ts"
         }
     }
 }
