@@ -6,11 +6,10 @@
     "outDir": "dist"
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
   "exclude": [
-    "dist",
-    "node_modules"
+    "dist"
   ],
   "references": []
 }

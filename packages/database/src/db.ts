@@ -1,4 +1,4 @@
-import { PrismaClient } from "./generated/prisma";
+import { PrismaClient } from "../generated/prisma";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
 const prisma =
@@ -7,13 +7,13 @@ const prisma =
     }).$extends(withAccelerate())
 
 // --- Services Exports ---
-import { GuildService } from "./src/services/guild.service";
-import { TicketService } from "./src/services/ticket.service";
-import { PanelService } from "./src/services/panel.service";
-import { FormService } from "./src/services/form.service";
+import { GuildService } from "./services/guild.service";
+import { TicketService } from "./services/ticket.service";
+import { PanelService } from "./services/panel.service";
+import { FormService } from "./services/form.service";
 
 // --- Types Export ---
-import { Guild, TicketPanel, Ticket, Panel, FormData } from "./generated/prisma";
+import { Guild, TicketPanel, Ticket, Panel, FormData } from "../generated/prisma";
 
 // --- Main Exports ---
 export {

@@ -11,28 +11,25 @@
         "baseUrl": ".",
         "paths": {
             "@robo/shared": [
-                "packages/shared/main.ts"
+                "packages/shared/src/main.ts"
             ],
             "@robo/shared/*": [
-                "packages/shared/*"
-            ],
-            "@shared/*": [
-                "packages/shared/*"
-            ],
-            "@robo/config": [
-                "packages/config/src/env.ts"
+                "packages/shared/src/*"
             ],
             "@robo/config/*": [
                 "packages/config/src/*"
             ],
             "@robo/db": [
-                "packages/database/db.ts"
+                "packages/database/src/db.ts"
             ],
             "@robo/db/*": [
                 "packages/database/src/*"
             ],
             "@robo/logger": [
                 "packages/logger/src/index.ts"
+            ],
+            "@robo/logger/*": [
+                "packages/logger/src/*"
             ]
         }
     }

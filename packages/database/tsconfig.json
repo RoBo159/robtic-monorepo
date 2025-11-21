@@ -2,14 +2,21 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist"
   },
-  "include": ["db.ts", "prisma/**/*.ts", "src"],
-  "exclude": ["dist"],
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "dist"
+  ],
   "references": [
-    { "path": "../shared" },
-    { "path": "../config" },
-    { "path": "../logger" }
+    {
+      "path": "../shared"
+    },
+    {
+      "path": "../logger"
+    }
   ]
 }

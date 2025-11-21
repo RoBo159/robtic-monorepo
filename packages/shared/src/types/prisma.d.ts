@@ -1,4 +1,4 @@
-import { Panel, Ticket, TicketPanel, FormData } from "@robo/db";
+import { Panel, Ticket, TicketPanel, FormData } from "@robo/db/db";
 
 export interface PanelProps extends Panel {
     ticketPanels?: TicketPanel[];

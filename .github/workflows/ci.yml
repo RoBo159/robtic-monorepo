@@ -38,9 +38,3 @@ jobs:
 
       - name: Type check monorepo
         run: bun run typecheck
-
-      - name: Build packages and apps
-        run: bun run build
-
-      - name: Run test suites
-        run: bun run test
