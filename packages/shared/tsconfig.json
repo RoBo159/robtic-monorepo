@@ -1,10 +1,11 @@
 {
-    "extends": "../../tsconfig.build.json",
+    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
         "composite": true,
         "rootDir": ".",
         "outDir": "dist"
     },
     "include": ["main.ts", "types", "utils"],
-    "references": [{ "path": "../config" }]
+    "exclude": ["dist"],
+    "references": []
 }
