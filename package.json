@@ -30,7 +30,8 @@
         
         "test": "bun run --filter './**' test",
         "typecheck": "tsc -b tsconfig.build.json --pretty false",
-        "validate:deps": "bun install --frozen-lockfile"
+        "validate:deps": "bun install --frozen-lockfile",
+        "postinstall": "git config core.hooksPath .githooks"
     },
     "devDependencies": {
         "@types/bun": "latest",

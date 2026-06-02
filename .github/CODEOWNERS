@@ -1,0 +1,9 @@
+# Governance files — require owner review to modify or delete
+CLAUDE.md @robo38
+AGENTS.md @robo38
+AGENTS_SETTINGS.md @robo38
+COPYRIGHT.md @robo38
+GEMINI.md @robo38
+LICENSE @robo38
+.github/copilot-instructions.md @robo38
+.github/CODEOWNERS @robo38
