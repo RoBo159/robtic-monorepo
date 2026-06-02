@@ -1,0 +1,21 @@
+#!/bin/sh
+# Governance protection — blocks commits that delete protected files
+
+PROTECTED="CLAUDE.md AGENTS.md AGENTS_SETTINGS.md COPYRIGHT.md GEMINI.md LICENSE .github/CODEOWNERS .github/copilot-instructions.md"
+
+FAILED=0
+for f in $PROTECTED; do
+  if git diff --cached --name-only --diff-filter=D | grep -qx "$f"; then
+    echo "GOVERNANCE ERROR: '$f' is a protected file and cannot be deleted."
+    FAILED=1
+  fi
+done
+
+if [ $FAILED -ne 0 ]; then
+  echo ""
+  echo "Commit blocked. Restore the protected file(s) and try again."
+  echo "Only the repository owner may remove governance files."
+  exit 1
+fi
+
+exit 0
